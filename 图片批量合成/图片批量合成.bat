@@ -1,9 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-@rem 设置最大合成数量
-set /a max_mixed_num=50
-
 @rem 设置输出文件夹
 set output_folder=output
 
@@ -44,9 +41,12 @@ for %%j in (!input_dirs[1]!\*.png !input_dirs[1]!\*.jpg) do (
     set "img_1[!i!]=%%j"
 )
 
+@rem 获取图片和最大合成数量
 set i=0
+set /a max_mixed_num=0
 for %%j in (!input_dirs[2]!\*.png !input_dirs[2]!\*.jpg) do (
     set /a i+=1
+	set /a max_mixed_num+=1
     set "img_2[!i!]=%%j"
 )
 
